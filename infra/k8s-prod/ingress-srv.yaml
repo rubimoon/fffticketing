@@ -9,7 +9,7 @@ metadata:
     name: ingress-service
 spec:
   rules:
-    - host: ticketing.fff
+    - host: ticketing.ff
       http:
         paths:
           - pathType: Prefix
