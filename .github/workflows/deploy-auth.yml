@@ -15,7 +15,7 @@ jobs:
       - name: Build the Docker image
         run: cd auth && docker build -t rubimoon12/auth .
       - name: Login to Docer Hub
-        run: docker login --username rubimoon12 --password qDR9$nR2yHCN
+        run: docker login --username $DOCKER_USERNAME --password $DOCKER_PASSWORD
         env:
           DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
           DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
