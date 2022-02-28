@@ -19,4 +19,4 @@ jobs:
       - name: Restart the deployment, using the latest image
         run: kubectl rollout restart deployment auth-depl
       - name: Apply configuration to Cluster
-        run: kubectl apply -f infra/k8s
+        run: kubectl apply -f infra/k8s && kubectl apply -f infra/k8s-prod
