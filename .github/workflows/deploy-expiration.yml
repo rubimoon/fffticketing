@@ -1,0 +1,30 @@
+name: deploy-expiration
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - 'expiration/**'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Build the Docker image
+        run: cd expiration && docker build -t rubimoon12/expiration .
+      - name: Login to Docer Hub
+        run: docker login --username $DOCKER_USERNAME --password $DOCKER_PASSWORD
+        env:
+          DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
+          DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
+      - name: Push image to Docker Hub
+        run: docker push rubimoon12/expiration
+      - uses: digitalocean/action-doctl@v2
+        with:
+          token: ${{ secrets.DIGITALOCEAN_ACCESS_TOKEN }}
+      - name: Connect to Kubernetes Cluster in Digital Ocean
+        run: doctl kubernetes cluster kubeconfig save ticketing
+      - name: Restart the deployment, using the latest image
+        run: kubectl rollout restart deployment expiration-depl
