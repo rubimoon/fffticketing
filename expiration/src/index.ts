@@ -4,6 +4,7 @@ import { OrderCreatedListener } from './events/listeners/order-created-listener'
 const { NATS_CLUSTER_ID, NATS_URL, NATS_CLIENT_ID } = process.env;
 
 const start = async () => {
+  console.log('Expiration Service is starting up.....');
   if (!NATS_CLUSTER_ID) {
     throw new Error('NATS CLUSTER must be defined.');
   }
