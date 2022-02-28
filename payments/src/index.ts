@@ -9,7 +9,11 @@ const { MONGO_URL, JWT_KEY, NATS_CLUSTER_ID, NATS_URL, NATS_CLIENT_ID } =
   process.env;
 
 const start = async () => {
+<<<<<<< HEAD
   console.log("Payments Service is starting up...");
+=======
+  console.log("Payments Service is starting up.....");
+>>>>>>> 19d695300a8e3e6517842302463cd3c1651ab946
   if (!JWT_KEY) {
     throw new Error('JWT_KEY must be defined.');
   }

@@ -19,7 +19,11 @@ const LandingPage = ({ currentUser, tickets }) => {
 
   return (
     <div>
+<<<<<<< HEAD
       <h2>Tickets</h2>
+=======
+      <h3>Tickets</h3>
+>>>>>>> 19d695300a8e3e6517842302463cd3c1651ab946
       <table className='table'>
         <thead>
           <tr>
