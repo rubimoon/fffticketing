@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: client
-          image: gcr.io/ticketing-dev-340908/client
+          image: rubimoon12/client
 
 ---
 apiVersion: v1
