@@ -5,7 +5,7 @@ const PORT = 3000;
 const { MONGO_URL, JWT_KEY } = process.env;
 
 const start = async () => {
-  console.log('Auth Service is starting up......');
+  console.log('Auth Service is starting up.......');
   if (!JWT_KEY) {
     throw new Error('JWT_KEY must be defined.');
   }
