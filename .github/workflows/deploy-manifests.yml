@@ -1,0 +1,22 @@
+name: deploy-manifests
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - 'auth/**'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: digitalocean/action-doctl@v2
+        with: 
+          token: ${{ secrets.DIGITALOCEAN_ACCESS_TOKEN }}
+      - name: Connect to Kubernetes Cluster in Digital Ocean 
+        run: doctl kubernetes cluster kubeconfig save ticketing
+      - name: Restart the deployment, using the latest image
+        run: kubectl rollout restart deployment auth-depl
+      - name: Apply configuration to Cluster
+        run: kubectl apply -f infra/k8s
