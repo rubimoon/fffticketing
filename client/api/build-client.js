@@ -4,8 +4,7 @@ export default ({ req }) => {
   if (typeof window === 'undefined') {
     // we are on the server
     return axios.create({
-      baseURL:
-        'http://ingress-nginx-controller.ingress-nginx.svc.cluster.local',
+      baseURL: 'http://www.rubimoon.xyz',
       headers: req.headers,
     });
   } else {
